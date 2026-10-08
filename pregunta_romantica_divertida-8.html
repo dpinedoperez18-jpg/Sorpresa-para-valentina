@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>¿De verdad quieres decir que no? 😂❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;justify-content:center;align-items:center;font-family:Arial,sans-serif;background:linear-gradient(135deg,#ffd1e3,#fff5f8);overflow:hidden;color:#641b3c}
+.card{width:min(92%,520px);padding:30px 22px;text-align:center;background:#fff;border-radius:28px;box-shadow:0 15px 50px #9b477833;position:relative;z-index:2}
+h1{font-size:30px;margin:5px 0 16px}p{font-size:19px;line-height:1.5}button{border:0;border-radius:30px;padding:14px 27px;margin:8px;font-size:18px;font-weight:bold;cursor:pointer}.yes{background:#ff4f87;color:white}.no{background:#eee;color:#555}.small{font-size:14px;color:#9a6078;margin-top:15px}.float{position:fixed;bottom:-50px;font-size:30px;animation:up 4s linear forwards;z-index:1}@keyframes up{to{transform:translateY(-115vh) rotate(30deg);opacity:0}}.hidden{display:none}
+</style></head>
+<body><div class="card">
+<div id="quiz"><h1>💌 Tengo unas preguntitas para ti...</h1><p id="q">¿Te gusta pasar tiempo conmigo? 🥰</p>
+<button class="yes" onclick="next(true)">Sí ❤️</button><button class="no" onclick="next(false)">No 🙈</button><div class="small" id="p">Pregunta 1 de 10</div></div>
+<div id="final" class="hidden"><h1>💖 Una última pregunta...</h1><p>Hay algo que llevo un ratito queriendo preguntarte...</p><h1>Valentina, ¿quieres ser mi novia? 🥹❤️</h1>
+<button class="yes" onclick="yes()">¡SÍ! ❤️</button><button class="no" id="finalNo" onmouseover="escapeNo()" ontouchstart="escapeNo()">No 😢</button></div>
+<div id="result" class="hidden"></div></div>
+<script>
+const qs=[
+"¿Te gusta pasar tiempo conmigo? 🥰",
+"¿Te hace feliz recibir un mensaje mío? 💕",
+"¿Te saco una sonrisa aunque sea un poquito? 😊",
+"¿Te gusta cuando hablamos hasta tarde? 🌙💬",
+"¿Te emociona ver un mensaje mío? 👀💌",
+"¿Te gustaría compartir más momentos conmigo? ✨",
+"¿Crees que entre nosotros hay algo especial? 🥹❤️",
+"¿Te gustaría crear muchos recuerdos juntos? 🌷",
+"¿Me darías una oportunidad para hacerte feliz? 💖",
+"¿Crees que podríamos ser una bonita pareja? 😳💕"
+];let i=0;
+function burst(s,n=15){for(let j=0;j<n;j++)setTimeout(()=>{let e=document.createElement("span");e.className="float";e.textContent=s;e.style.left=Math.random()*100+"vw";e.style.animationDuration=2.5+Math.random()*2+"s";document.body.appendChild(e);setTimeout(()=>e.remove(),5000)},j*70)}
+function next(a){burst(a?"❤️":"😢",a?5:2);i++;if(i<qs.length){q.textContent=qs[i];p.textContent=`Pregunta ${i+1} de ${qs.length}`}else{quiz.classList.add("hidden");final.classList.remove("hidden")}}
+function yes(){final.classList.add("hidden");result.classList.remove("hidden");result.innerHTML="<h1>¡¡SÍÍÍ!! 🥹❤️</h1><p>Entonces oficialmente comienza nuestra historia. 💕✨</p>";burst("❤️",40)}
+function no(){final.classList.add("hidden");result.classList.remove("hidden");result.innerHTML="<h1>Está bien... 🥺</h1><p>Gracias por responder con sinceridad. 💗</p>";burst("😢",20)}
+function escapeNo(){let b=document.getElementById("finalNo");b.style.position="fixed";b.style.left=Math.random()*75+"vw";b.style.top=Math.random()*75+"vh";burst("😂",2)}
+</script></body></html>
